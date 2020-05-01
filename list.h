@@ -1,6 +1,12 @@
 #ifndef __LIST_H
 #define __LIST_H
 
+#define OPTION_A "(a) add a number to the end of the list"
+#define OPTION_M "(m) exit"
+
+#define VALUE_MSG "> Enter a value: "
+#define POSITION_MSG "> Enter a position: "
+
 typedef enum
 {
   Failure,
@@ -23,6 +29,8 @@ typedef struct
 } List;
 
 typedef List *List_ptr;
+
+void read_option_from_menu(char *);
 
 List_ptr create_list(void);
 
