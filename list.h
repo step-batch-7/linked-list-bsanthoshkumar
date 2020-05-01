@@ -2,6 +2,7 @@
 #define __LIST_H
 
 #define OPTION_A "(a) add a number to the end of the list"
+#define OPTION_B "(b) add a number to the start of the list"
 #define OPTION_L "(l) display the list of numbers"
 #define OPTION_M "(m) exit"
 

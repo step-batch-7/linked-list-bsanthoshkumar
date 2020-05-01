@@ -4,7 +4,7 @@
 void read_option_from_menu(char *option)
 {
   printf("Main Menu\n---------\n");
-  printf("%s\n%s\n%s\n", OPTION_A, OPTION_L, OPTION_M);
+  printf("%s\n%s\n%s\n%s\n", OPTION_A, OPTION_B, OPTION_L, OPTION_M);
   scanf("%c", option);
   while ((getchar()) != '\n');
 }
@@ -25,11 +25,19 @@ void perform_operation(char option, List_ptr list)
     read_input(&value, VALUE_MSG);
     add_to_end(list, value);
     break;
+
+  case 'b':
+    read_input(&value, VALUE_MSG);
+    add_to_start(list, value);
+    break;
+
   case 'l':
     display(list);
     break;
+
   case 'm':
     break;
+
   default:
     printf("Invalid option\n");
     break;
