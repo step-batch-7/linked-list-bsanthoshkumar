@@ -31,3 +31,20 @@ Status add_to_end(List_ptr list, int value)
 
   return Success;
 }
+
+void display(List_ptr list)
+{
+  if(list->head == NULL)
+  {
+    printf("List is empty\n");
+    return;
+  }
+  printf("List : ");
+  Node *current = list->head;
+  while(current != NULL)
+  {
+    printf("%d ",current->value);
+    current = current->next;
+  }
+  printf("\n");
+}
