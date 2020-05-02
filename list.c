@@ -133,12 +133,7 @@ Status remove_from_end(List_ptr list)
   
   if(list->count == 1)
   {
-    Node_ptr node = list->last;
-    list->head = NULL;
-    list->last = NULL;
-    list->count--;
-    free(node);
-    return Success;
+    return remove_from_start(list);
   }
  
   Node_ptr current = list->head;
