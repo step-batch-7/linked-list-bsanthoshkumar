@@ -5,6 +5,7 @@
 #define OPTION_B "(b) add a number to the start of the list"
 #define OPTION_C "(c) insert a number at a given position in the list"
 #define OPTION_D "(d) add a unique item on the list at the end(if it alreay exists, do not insert)"
+#define OPTION_E "(e) remove a number from the beginning of the list"
 #define OPTION_L "(l) display the list of numbers"
 #define OPTION_M "(m) exit"
 

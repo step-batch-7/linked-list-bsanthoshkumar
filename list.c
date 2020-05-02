@@ -96,11 +96,29 @@ void display(List_ptr list)
   }
 
   printf("List : ");
-  Node *current = list->head;
+  Node_ptr current = list->head;
   while(current != NULL)
   {
     printf("%d ",current->value);
     current = current->next;
   }
   printf("\n");
+}
+
+Status remove_from_start(List_ptr list)
+{
+  if(list->head == NULL)
+  {
+    return Failure;
+  }
+
+  Node_ptr node = list->head;
+  list->head = list->head->next;
+  if(list->count == 1)
+  {
+    list->last = list->head;
+  }
+  free(node);
+
+  return Success; 
 }
