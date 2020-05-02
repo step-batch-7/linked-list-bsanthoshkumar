@@ -4,7 +4,7 @@
 void read_option_from_menu(char *option)
 {
   printf("Main Menu\n---------\n");
-  printf("%s\n%s\n%s\n%s\n%s\n", OPTION_A, OPTION_B, OPTION_C, OPTION_L, OPTION_M);
+  printf("%s\n%s\n%s\n%s\n%s\n%s\n", OPTION_A, OPTION_B, OPTION_C, OPTION_D, OPTION_L, OPTION_M);
   scanf("%c", option);
   while ((getchar()) != '\n');
 }
@@ -37,6 +37,11 @@ void perform_operation(char option, List_ptr list)
     insert_at(list, value, position);
     break;
 
+  case 'd':
+    read_input(&value, VALUE_MSG);
+    add_unique(list, value);
+    break;
+    
   case 'l':
     display(list);
     break;
