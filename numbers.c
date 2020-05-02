@@ -4,7 +4,8 @@
 void read_option_from_menu(char *option)
 {
   printf("Main Menu\n---------\n");
-  printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n", OPTION_A, OPTION_B, OPTION_C, OPTION_D, OPTION_E, OPTION_F, OPTION_L, OPTION_M);
+  printf("%s\n%s\n%s\n%s\n%s\n%s\n", OPTION_A, OPTION_B, OPTION_C, OPTION_D, OPTION_E, OPTION_F);
+  printf("%s\n%s\n%s\n", OPTION_K, OPTION_L, OPTION_M);
   scanf("%c", option);
   while ((getchar()) != '\n');
 }
@@ -48,6 +49,11 @@ void perform_operation(char option, List_ptr list)
 
   case 'f':
     remove_from_end(list);
+    break;
+
+  case 'k':
+    read_input(&value, VALUE_MSG);
+    check_number_exists(list, value);
     break;
 
   case 'l':

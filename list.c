@@ -149,3 +149,20 @@ Status remove_from_end(List_ptr list)
   
   return Success;
 }
+
+void check_number_exists(List_ptr list, int value)
+{
+  int count = 0;
+  Node_ptr current = list->head;
+  while(current != NULL)
+  {
+    if(current->value == value)
+    {
+      printf("%d is present in the list at position %d\n", value, count);
+      return;
+    }
+    current = current->next;
+    count++;
+  }
+  printf("%d is not present in the list\n", value);
+}
