@@ -3,6 +3,7 @@
 
 #define OPTION_A "(a) add a number to the end of the list"
 #define OPTION_B "(b) add a number to the start of the list"
+#define OPTION_C "(c) insert a number at a given position in the list"
 #define OPTION_L "(l) display the list of numbers"
 #define OPTION_M "(m) exit"
 
@@ -31,6 +32,11 @@ typedef struct
 } List;
 
 typedef List *List_ptr;
+
+typedef struct {
+  Node_ptr prev;
+  Node_ptr current;
+} Prev_Current_Pair;
 
 void read_option_from_menu(char *);
 

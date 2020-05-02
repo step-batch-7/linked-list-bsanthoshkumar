@@ -28,7 +28,7 @@ Status add_to_end(List_ptr list, int value)
     list->last->next = newnode;
   }
   list->last = newnode;
-  list->count = list->count + 1;
+  list->count++;
 
   return Success;
 }
@@ -42,8 +42,38 @@ Status add_to_start(List_ptr list, int value)
   {
     list->last = newnode;
   }
-  list->count = list->count + 1;
-  
+  list->count++;
+
+  return Success;
+}
+
+Status insert_at(List_ptr list, int value, int position)
+{
+  if(position < 0 || position > list->count)
+  {
+    return Failure;
+  }
+  if(position == 0)
+  {
+    return add_to_start(list, value);
+  }
+
+  int temp = 1;
+  Prev_Current_Pair *pair = malloc(sizeof(Prev_Current_Pair));
+  pair->prev = list->head;
+  pair->current = list->head;
+
+  while(temp <= position) {
+    pair->prev = pair->current;
+    pair->current = pair->current->next;
+    temp++;
+  }
+
+  Node_ptr newnode = create_newnode(value);
+  pair->prev->next = newnode;
+  newnode->next = pair->current;
+  list->count++;
+
   return Success;
 }
 
@@ -54,6 +84,7 @@ void display(List_ptr list)
     printf("List is empty\n");
     return;
   }
+
   printf("List : ");
   Node *current = list->head;
   while(current != NULL)
