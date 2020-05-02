@@ -118,7 +118,39 @@ Status remove_from_start(List_ptr list)
   {
     list->last = list->head;
   }
+  list->count--;
   free(node);
 
   return Success; 
+}
+
+Status remove_from_end(List_ptr list)
+{
+  if(list->last == NULL)
+  {
+    return Failure;
+  }
+  
+  if(list->count == 1)
+  {
+    Node_ptr node = list->last;
+    list->head = NULL;
+    list->last = NULL;
+    list->count--;
+    free(node);
+    return Success;
+  }
+ 
+  Node_ptr current = list->head;
+  while(current->next != list->last) {
+    current = current->next;
+  }
+  
+  list->last = current;
+  current = current->next;
+  list->last->next = NULL;
+  list->count--;
+  free(current);
+  
+  return Success;
 }
