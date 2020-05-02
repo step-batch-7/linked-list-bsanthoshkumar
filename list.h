@@ -7,6 +7,7 @@
 #define OPTION_D "(d) add a unique item on the list at the end(if it alreay exists, do not insert)"
 #define OPTION_E "(e) remove a number from the beginning of the list"
 #define OPTION_F "(f) remove a number from the end of the list"
+#define OPTION_J "(j) clear the whole list"
 #define OPTION_K "(k) check if a number exists in the list"
 #define OPTION_L "(l) display the list of numbers"
 #define OPTION_M "(m) exit"
@@ -41,6 +42,8 @@ typedef struct {
   Node_ptr prev;
   Node_ptr current;
 } Prev_Current_Pair;
+
+typedef Prev_Current_Pair *Prev_Current_Pair_ptr;
 
 void read_option_from_menu(char *);
 

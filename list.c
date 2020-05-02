@@ -59,7 +59,7 @@ Status insert_at(List_ptr list, int value, int position)
   }
 
   int temp = 1;
-  Prev_Current_Pair *pair = malloc(sizeof(Prev_Current_Pair));
+  Prev_Current_Pair_ptr pair = malloc(sizeof(Prev_Current_Pair));
   pair->prev = list->head;
   pair->current = list->head;
 
@@ -147,6 +147,28 @@ Status remove_from_end(List_ptr list)
   list->count--;
   free(current);
   
+  return Success;
+}
+
+Status clear_list(List_ptr list)
+{
+  if(list->head == NULL)
+  {
+    return Failure;
+  }
+
+  Prev_Current_Pair_ptr pair = malloc(sizeof(Prev_Current_Pair));
+  pair->current = list->head;
+  while(pair->current != NULL)
+  {
+    pair->prev = pair->current;
+    pair->current = pair->current->next;
+    free(pair->prev);
+  }
+  
+  list->head = NULL;
+  list->last = NULL;
+
   return Success;
 }
 
