@@ -177,6 +177,23 @@ Status remove_at(List_ptr list, int position)
   return Success;
 }
 
+Status remove_first_occurrence(List_ptr list, int value)
+{
+  int position = 0;
+  Node_ptr current = list->head; 
+  while(current != NULL)
+  {
+    if(current->value == value)
+    {
+      return remove_at(list, position);
+    }
+    current = current->next;
+    position++;
+  }
+
+  return Failure;
+}
+
 Status clear_list(List_ptr list)
 {
   if(list->head == NULL)
