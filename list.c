@@ -172,6 +172,12 @@ Status clear_list(List_ptr list)
   return Success;
 }
 
+void destroy_list(List_ptr list)
+{
+  clear_list(list);
+  free(list);
+}
+
 void check_number_exists(List_ptr list, int value)
 {
   int count = 0;

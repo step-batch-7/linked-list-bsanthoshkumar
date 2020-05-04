@@ -65,6 +65,7 @@ void perform_operation(char option, List_ptr list)
     break;
 
   case 'm':
+    destroy_list(list);
     break;
 
   default:
