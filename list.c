@@ -151,10 +151,11 @@ Status remove_from_end(List_ptr list)
 
 Status remove_at(List_ptr list, int position)
 {
-  if(position < 0 || position > list->count)
+  if(position < 0 || position >= list->count)
   {
     return Failure;
   }
+
   if(position == 0)
   {
     return remove_from_start(list);
@@ -171,6 +172,11 @@ Status remove_at(List_ptr list, int position)
   }
 
   pair->prev->next = pair->current->next;
+  if(pair->prev->next == NULL)
+  {
+    list->last = pair->prev;
+  }
+
   free(pair->current);
   list->count--;
 
@@ -192,6 +198,24 @@ Status remove_first_occurrence(List_ptr list, int value)
   }
 
   return Failure;
+}
+
+Status remove_all_occurrences(List_ptr list, int value)
+{
+  int removed_count = 0;
+  int result = Success;
+  while(result != Failure)
+  {
+    result = remove_first_occurrence(list, value);
+    result && removed_count++;
+  }
+
+  if(removed_count == 0) 
+  {
+    return Failure;
+  }
+
+  return Success;
 }
 
 Status clear_list(List_ptr list)
