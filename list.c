@@ -246,6 +246,7 @@ Status clear_list(List_ptr list)
 
   list->head = NULL;
   list->last = NULL;
+  list->count = 0;
 
   return Success;
 }
